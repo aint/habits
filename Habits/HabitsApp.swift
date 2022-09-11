@@ -13,7 +13,9 @@ struct HabitsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HabitsView(habits: $habits)
+            NavigationView {
+                HabitsView(habits: $habits)
+            }
         }
     }
 }

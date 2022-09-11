@@ -30,7 +30,9 @@ struct HabitsView: View {
                     .padding(.trailing)
             }
             ForEach($habits) { $habit in
-                HabitSummaryView(habit: habit)
+                NavigationLink(destination: HabitDetailView(habit: $habit)) {
+                    HabitSummaryView(habit: habit)
+                }
             }
         }
         .navigationTitle("Habits")

@@ -16,7 +16,7 @@ struct HabitDetailView: View {
                         .padding(4)
                         .cornerRadius(4)
                 }
-                .foregroundColor(habit.color)
+                .foregroundColor(habit.uiColor)
                 HStack {
                     Label("Month", systemImage: "goforward.30")
                     Spacer()
@@ -24,7 +24,7 @@ struct HabitDetailView: View {
                         .padding(4)
                         .cornerRadius(4)
                 }
-                .foregroundColor(habit.color)
+                .foregroundColor(habit.uiColor)
                 HStack {
                     Label("Year", systemImage: "calendar")
                     Spacer()
@@ -32,7 +32,7 @@ struct HabitDetailView: View {
                         .padding(4)
                         .cornerRadius(4)
                 }
-                .foregroundColor(habit.color)
+                .foregroundColor(habit.uiColor)
                 HStack {
                     Label("Total", systemImage: "a.circle")
                     Spacer()
@@ -40,7 +40,7 @@ struct HabitDetailView: View {
                         .padding(4)
                         .cornerRadius(4)
                 }
-                .foregroundColor(habit.color)
+                .foregroundColor(habit.uiColor)
                 HStack {
                     Label("Theme", systemImage: "paintpalette")
                     Spacer()

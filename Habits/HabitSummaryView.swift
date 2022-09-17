@@ -16,7 +16,7 @@ struct HabitSummaryView: View {
             Image(systemName: "checkmark")
         }
         .font(.body)
-        .foregroundColor(habit.color)
+        .foregroundColor(habit.uiColor)
         .padding([.top, .bottom, .trailing])
     }
 }

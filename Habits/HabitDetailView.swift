@@ -57,7 +57,32 @@ struct HabitDetailView: View {
             Section(header: Text("Calendar")) {
             }
         }
-        .navigationTitle(habit.name)        
+        .navigationTitle(habit.name)
+        .toolbar {
+            Button("Edit") {
+                isPresentingEditView = true
+                updateHabit = habit
+            }
+        }
+        .sheet(isPresented: $isPresentingEditView) {
+            NavigationView {
+                HabitEditView(habit: $updateHabit)
+                    .navigationTitle(habit.name)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel") {
+                                isPresentingEditView = false
+                            }
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") {
+                                isPresentingEditView = false
+                                habit.update(from: updateHabit)
+                            }
+                        }
+                    }
+            }
+        }
     }
 }
 

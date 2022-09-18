@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct HabitsView: View {
+    @State private var isPresentingNewHabitView = false
+    @State private var newHabit = Habit()
     @Binding var habits: [Habit]
-    
+
     var body: some View {
         List {
             HStack{
@@ -37,8 +39,30 @@ struct HabitsView: View {
         }
         .navigationTitle("Habits")
         .toolbar {
-            Button(action: {}) {
+            Button(action: {
+                isPresentingNewHabitView = true
+            }) {
                 Image(systemName: "plus")
+            }
+        }
+        .sheet(isPresented: $isPresentingNewHabitView) {
+            NavigationView {
+                HabitEditView(habit: $newHabit)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Dismiss") {
+                                isPresentingNewHabitView = false
+                                newHabit = Habit()
+                            }
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Add") {
+                                habits.append(newHabit)
+                                isPresentingNewHabitView = false
+                                newHabit = Habit()
+                            }
+                        }
+                    }
             }
         }
     }

@@ -15,6 +15,7 @@
 		BC5A3BDE28CE161000CAF319 /* HabitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5A3BDD28CE161000CAF319 /* HabitEditView.swift */; };
 		BCC3857A28DF1A9D00DB8E49 /* ChartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC3857928DF1A9D00DB8E49 /* ChartEntry.swift */; };
 		BCC3857C28DF215C00DB8E49 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC3857B28DF215C00DB8E49 /* Utils.swift */; };
+		BCC3857E28DF255E00DB8E49 /* ScoreChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC3857D28DF255E00DB8E49 /* ScoreChartView.swift */; };
 		BCD3692F28CCADD300B48135 /* HabitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD3692E28CCADD300B48135 /* HabitsApp.swift */; };
 		BCD3693328CCADD400B48135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD3693228CCADD400B48135 /* Assets.xcassets */; };
 		BCD3693628CCADD400B48135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD3693528CCADD400B48135 /* Preview Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		BC5A3BDD28CE161000CAF319 /* HabitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditView.swift; sourceTree = "<group>"; };
 		BCC3857928DF1A9D00DB8E49 /* ChartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartEntry.swift; sourceTree = "<group>"; };
 		BCC3857B28DF215C00DB8E49 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BCC3857D28DF255E00DB8E49 /* ScoreChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreChartView.swift; sourceTree = "<group>"; };
 		BCD3692B28CCADD300B48135 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD3692E28CCADD300B48135 /* HabitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsApp.swift; sourceTree = "<group>"; };
 		BCD3693228CCADD400B48135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				BC5A3BDB28CE137B00CAF319 /* HabitDetailView.swift */,
 				BC5A3BDD28CE161000CAF319 /* HabitEditView.swift */,
 				BC025C5628DE3CDC00E55CF0 /* HistoryChartView.swift */,
+				BCC3857D28DF255E00DB8E49 /* ScoreChartView.swift */,
 				BCD3693228CCADD400B48135 /* Assets.xcassets */,
 				BCD3693428CCADD400B48135 /* Preview Content */,
 			);
@@ -293,6 +296,7 @@
 				BC5A3BDC28CE137B00CAF319 /* HabitDetailView.swift in Sources */,
 				BCC3857A28DF1A9D00DB8E49 /* ChartEntry.swift in Sources */,
 				BC5A3BD628CDF44700CAF319 /* HabitsView.swift in Sources */,
+				BCC3857E28DF255E00DB8E49 /* ScoreChartView.swift in Sources */,
 				BC5A3BD828CDF4B800CAF319 /* HabitSummaryView.swift in Sources */,
 				BC025C5728DE3CDC00E55CF0 /* HistoryChartView.swift in Sources */,
 				BCD3692F28CCADD300B48135 /* HabitsApp.swift in Sources */,

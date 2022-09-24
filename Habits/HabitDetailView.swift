@@ -51,6 +51,9 @@ struct HabitDetailView: View {
                 .foregroundColor(.accentColor)
             }
             Section(header: Text("Score")) {
+                ScoreChartView()
+                    .frame(minHeight: 200)
+                    .foregroundColor(habit.uiColor)
             }
             Section(header: Text("History")) {
                 HistoryChartView()

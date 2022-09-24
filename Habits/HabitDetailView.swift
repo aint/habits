@@ -53,6 +53,9 @@ struct HabitDetailView: View {
             Section(header: Text("Score")) {
             }
             Section(header: Text("History")) {
+                HistoryChartView()
+                    .frame(minHeight: 250)
+                    .foregroundColor(habit.uiColor)
             }
             Section(header: Text("Calendar")) {
             }

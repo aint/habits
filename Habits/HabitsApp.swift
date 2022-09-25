@@ -9,12 +9,27 @@ import SwiftUI
 
 @main
 struct HabitsApp: App {
-    @State private var habits = Habit.sampleData
+    @StateObject private var store = HabitStore()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HabitsView(habits: $habits)
+                HabitsView(habits: $store.habits) {
+                    Task {
+                        do {
+                            try await HabitStore.save(habits: store.habits)
+                        } catch {
+                            fatalError("Error saving habits.")
+                        }
+                    }
+                }
+            }
+            .task {
+                do {
+                    store.habits = try await HabitStore.load()
+                } catch {
+                    fatalError("Error loading habits.")
+                }
             }
         }
     }

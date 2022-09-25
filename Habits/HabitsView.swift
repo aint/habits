@@ -5,6 +5,9 @@ struct HabitsView: View {
     @State private var newHabit = Habit()
     @Binding var habits: [Habit]
 
+    @Environment(\.scenePhase) private var scenePhase
+    let saveAction: () -> Void
+
     var body: some View {
         List {
             HStack{
@@ -65,13 +68,16 @@ struct HabitsView: View {
                     }
             }
         }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive { saveAction() }
+        }
     }
 }
 
 struct HabitsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabitsView(habits: .constant(Habit.sampleData))
+            HabitsView(habits: .constant(Habit.sampleData), saveAction: {})
         }
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC025C5728DE3CDC00E55CF0 /* HistoryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC025C5628DE3CDC00E55CF0 /* HistoryChartView.swift */; };
 		BC50DD2128D3AC33000A632F /* HabitStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50DD2028D3AC33000A632F /* HabitStore.swift */; };
+		BC50DD2528D5C83A000A632F /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50DD2428D5C83A000A632F /* Entry.swift */; };
 		BC5A3BCF28CDEEA100CAF319 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5A3BCE28CDEEA100CAF319 /* Habit.swift */; };
 		BC5A3BD628CDF44700CAF319 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5A3BD528CDF44700CAF319 /* HabitsView.swift */; };
 		BC5A3BD828CDF4B800CAF319 /* HabitSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5A3BD728CDF4B800CAF319 /* HabitSummaryView.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		BC025C5628DE3CDC00E55CF0 /* HistoryChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryChartView.swift; sourceTree = "<group>"; };
 		BC50DD2028D3AC33000A632F /* HabitStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitStore.swift; sourceTree = "<group>"; };
+		BC50DD2428D5C83A000A632F /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		BC5A3BCE28CDEEA100CAF319 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		BC5A3BD428CDF32500CAF319 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		BC5A3BD528CDF44700CAF319 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				BC5A3BCE28CDEEA100CAF319 /* Habit.swift */,
 				BC50DD2028D3AC33000A632F /* HabitStore.swift */,
+				BC50DD2428D5C83A000A632F /* Entry.swift */,
 				BCC3857928DF1A9D00DB8E49 /* ChartEntry.swift */,
 				BCC3857B28DF215C00DB8E49 /* Utils.swift */,
 			);
@@ -302,6 +305,7 @@
 				BCC3857E28DF255E00DB8E49 /* ScoreChartView.swift in Sources */,
 				BC5A3BD828CDF4B800CAF319 /* HabitSummaryView.swift in Sources */,
 				BC025C5728DE3CDC00E55CF0 /* HistoryChartView.swift in Sources */,
+				BC50DD2528D5C83A000A632F /* Entry.swift in Sources */,
 				BC50DD2128D3AC33000A632F /* HabitStore.swift in Sources */,
 				BCD3692F28CCADD300B48135 /* HabitsApp.swift in Sources */,
 				BCC3857C28DF215C00DB8E49 /* Utils.swift in Sources */,

@@ -28,4 +28,8 @@ extension Date {
         return entries
     }
 
+    var withoutTime: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+
 }

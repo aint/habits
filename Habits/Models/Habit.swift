@@ -5,7 +5,7 @@ struct Habit: Identifiable, Codable {
     let id: UUID
     var name: String = ""
     var color: CodableColor = CodableColor(color: .black)
-    var days: [Date : Bool] = [:]
+    var entries: [Date : Entry] = [:]
     
     init(id: UUID = UUID()) {
         self.id = id
@@ -20,6 +20,33 @@ struct Habit: Identifiable, Codable {
     mutating func update(from habit: Habit) {
         name = habit.name
         color = habit.color
+    }
+    
+    mutating func addEntry(date: Date) {
+        entries.updateValue(Entry(date: date.withoutTime, value: 1), forKey: date.withoutTime)
+    }
+    
+    mutating func deleteEntry(date: Date) {
+        entries.removeValue(forKey: date.withoutTime)
+    }
+    
+    func checkEntry(date: Date) -> Bool {
+        return entries.keys.contains(date.withoutTime)
+    }
+    
+    func entryCount(_ component: Calendar.Component?) -> Int {
+        if component == nil {
+            return entries.count
+        }
+
+        var count = 0
+        for date in entries.keys {
+            if date.get(component!) == Date.now.get(component!) {
+                count += 1
+            }
+        }
+
+        return count
     }
 }
 

@@ -2,10 +2,11 @@ import SwiftUI
 import Charts
 
 struct HistoryChartView: View {
+    let habit: Habit
 
     var body: some View {
         Chart {
-            ForEach(ChartEntry.last12Months()) { entry in
+            ForEach(ChartEntry.last12MonthsCount(habit.entries)) { entry in
                 BarMark(
                     x: .value("Period", entry.label),
                     y: .value("Count", entry.value)
@@ -13,7 +14,7 @@ struct HistoryChartView: View {
                 .annotation(position: .top) {
                     Text("\(Int(entry.value))")
                         .font(.footnote)
-                        .foregroundColor(.blue) // TODO: set habit color
+                        .foregroundColor(habit.uiColor)
                 }
             }
         }
@@ -25,6 +26,6 @@ struct HistoryChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryChartView()
+        HistoryChartView(habit: Habit.sampleData[0])
     }
 }

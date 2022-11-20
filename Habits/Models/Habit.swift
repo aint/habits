@@ -48,6 +48,16 @@ struct Habit: Identifiable, Codable {
 
         return count
     }
+
+    func computeScore() -> Double {
+        return ChartEntry.scoreForLast15Days(entries).last!.value
+    }
+
+    static func computeScore(_ previousScore: Double, _ value: Double) -> Double {
+        let frequency = 1.0
+        let multiplier = pow(0.5, sqrt(frequency) / 13.0)
+        return previousScore * multiplier + value * (1 - multiplier)
+    }
 }
 
 extension Habit {

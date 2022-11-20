@@ -3,9 +3,9 @@ import Foundation
 struct Entry: Identifiable, Codable {
     let id: UUID
     var date: Date
-    var value: Float
+    var value: Double
 
-    init(id: UUID = UUID(), date: Date, value: Float) {
+    init(id: UUID = UUID(), date: Date, value: Double) {
         self.id = id
         self.date = date
         self.value = value

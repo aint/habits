@@ -38,4 +38,23 @@ struct ChartEntry: Identifiable {
         }
         return entries
     }
+
+    static func scoreForLast15Days(_ habitEntries: [Date: Entry]) -> [ChartEntry] {
+        var entries: [ChartEntry] = []
+        var score = 0.0
+        for (index, date) in Date.past(15, .day).reversed().enumerated() {
+            var label = String(date.get(.day))
+            if index == 0 || date.get(.day) == 1 {
+                label = "\(label)\n\(date.monthName)"
+            }
+
+            let value = habitEntries[date.withoutTime]?.value ?? 0.0
+            score = Habit.computeScore(score, value)
+
+            let entry = ChartEntry(label: label, value: score * 100)
+            entries.append(entry)
+        }
+        return entries
+    }
+
 }

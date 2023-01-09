@@ -12,7 +12,7 @@ struct HabitDetailView: View {
                 HStack {
                     Label("Score", systemImage: "gamecontroller")
                     Spacer()
-                    Text("\(habit.computeScore())")
+                    Text("\(habit.computeScore())%")
                         .padding(4)
                         .cornerRadius(4)
                 }
@@ -20,7 +20,7 @@ struct HabitDetailView: View {
                 HStack {
                     Label("Month", systemImage: "goforward.30")
                     Spacer()
-                    Text("???")
+                    Text("\(habit.entryCount(.month))")
                         .padding(4)
                         .cornerRadius(4)
                 }
@@ -28,7 +28,7 @@ struct HabitDetailView: View {
                 HStack {
                     Label("Year", systemImage: "calendar")
                     Spacer()
-                    Text("???")
+                    Text("\(habit.entryCount(.year))")
                         .padding(4)
                         .cornerRadius(4)
                 }
@@ -36,7 +36,7 @@ struct HabitDetailView: View {
                 HStack {
                     Label("Total", systemImage: "a.circle")
                     Spacer()
-                    Text("???")
+                    Text("\(habit.entryCount(nil))")
                         .padding(4)
                         .cornerRadius(4)
                 }
@@ -51,12 +51,12 @@ struct HabitDetailView: View {
                 .foregroundColor(.accentColor)
             }
             Section(header: Text("Score")) {
-                ScoreChartView()
+                ScoreChartView(habit: habit)
                     .frame(minHeight: 200)
                     .foregroundColor(habit.uiColor)
             }
             Section(header: Text("History")) {
-                HistoryChartView()
+                HistoryChartView(habit: habit)
                     .frame(minHeight: 250)
                     .foregroundColor(habit.uiColor)
             }

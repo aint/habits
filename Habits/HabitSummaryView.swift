@@ -7,28 +7,33 @@ struct HabitSummaryView: View {
     @Binding var habit: Habit
     
     var body: some View {
-        HStack {
-            Label("\(habit.name)", systemImage: "circle.dashed")
-                .font(.headline)
-            Spacer()
-            ForEach(Date.past(4, .day), id: \.self) { date in
-                Image(systemName: getIconOrDefault(date))
-                    .padding(.leading)
-                    .onTapGesture {
-                        if habit.checkEntry(date: date) {
-                            habit.deleteEntry(date: date)
-                            return
-                        }
-                        habit.addEntry(date: date)
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
+                HStack(spacing: 0) {
+                    Text("\(habit.name)")
+                        .frame(width: 0.6 * geometry.size.width, alignment: .leading)
+
+                    ForEach(Date.past(4, .day), id: \.self) { date in
+                        Image(systemName: getIconOrDefault(date))
+                            .frame(width: 0.1 * geometry.size.width)
+                            .onTapGesture {
+                                if habit.checkEntry(date: date) {
+                                    habit.deleteEntry(date: date)
+                                    return
+                                }
+                                habit.addEntry(date: date)
+                            }
                     }
+                }
+                Spacer()
             }
         }
-        .font(.body)
         .foregroundColor(habit.uiColor)
-//        .padding([.trailing])
+        .font(.body)
     }
 
-    func getIconOrDefault(_ date: Date) -> String {
+    func getIconOrDefault(_ date: Date) -> String { // rename
         if habit.checkEntry(date: date) {
             return HabitSummaryView.positiveIcon
         }

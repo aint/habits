@@ -9,24 +9,30 @@ struct HabitsView: View {
     let saveAction: () -> Void
 
     var body: some View {
-        List {
-            VStack {
-                NavigationLink(destination: EmptyView()) {
-                    HStack {
-                        Spacer()
-                        ForEach(Date.past(4, .day), id: \.self) { date in
-                            Label("\(date.weekdayName)\n\(date.get(.day))", systemImage: "")
-                                .labelStyle(.titleOnly)
-                                .font(.footnote)
+        HStack() {
+            List {
+                GeometryReader { geometry in
+                    HStack(spacing: 0) {
+                        Text("Name")
+                            .frame(width: 0.6 * geometry.size.width, alignment: .leading)
+                            .font(.subheadline)
+                        let dates = Date.past(4, .day)
+                        ForEach(dates.indices, id: \.self) { i in
+                            if i != 0 {
+                                Divider()
+                            }
+                            Text("\(dates[i].weekdayName)\n\(dates[i].get(.day))")
+                                .frame(width: 0.1 * geometry.size.width)
                                 .multilineTextAlignment(.center)
-                                .padding(.leading)
+                                .font(.footnote)
                         }
                     }
+                    .foregroundColor(.gray)
                 }
-            }
-            ForEach($habits) { $habit in
-                NavigationLink(destination: HabitDetailView(habit: $habit)) {
+                
+                ForEach($habits) { $habit in
                     HabitSummaryView(habit: $habit)
+                        .background(NavigationLink("", destination: HabitDetailView(habit: $habit)).opacity(0.0))
                 }
             }
         }

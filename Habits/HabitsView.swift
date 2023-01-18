@@ -9,7 +9,19 @@ struct HabitsView: View {
     let saveAction: () -> Void
 
     var body: some View {
-        HStack() {
+        VStack() {
+            HStack {
+                Text("Habits")
+                    .font(.title)
+                    .padding(.leading)
+                Spacer()
+                Button(action: {
+                    isPresentingNewHabitView = true
+                }) {
+                    Image(systemName: "plus").imageScale(.large)
+                }
+                .padding(.trailing)
+            }
             List {
                 GeometryReader { geometry in
                     HStack(spacing: 0) {
@@ -35,14 +47,7 @@ struct HabitsView: View {
                         .background(NavigationLink("", destination: HabitDetailView(habit: $habit)).opacity(0.0))
                 }
             }
-        }
-        .navigationTitle("Habits")
-        .toolbar {
-            Button(action: {
-                isPresentingNewHabitView = true
-            }) {
-                Image(systemName: "plus")
-            }
+            .listStyle(PlainListStyle())
         }
         .sheet(isPresented: $isPresentingNewHabitView) {
             NavigationView {

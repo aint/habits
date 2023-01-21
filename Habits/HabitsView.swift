@@ -46,6 +46,7 @@ struct HabitsView: View {
                     HabitSummaryView(habit: $habit)
                         .background(NavigationLink("", destination: HabitDetailView(habit: $habit)).opacity(0.0))
                 }
+                .onMove(perform: move)
             }
             .listStyle(PlainListStyle())
         }
@@ -72,6 +73,10 @@ struct HabitsView: View {
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { saveAction() }
         }
+    }
+
+    func move(from source: IndexSet, to destination: Int) {
+        habits.move(fromOffsets: source, toOffset: destination )
     }
 }
 

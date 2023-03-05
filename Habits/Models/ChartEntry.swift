@@ -39,6 +39,29 @@ struct ChartEntry: Identifiable {
         return entries
     }
 
+    static func render(_ habitEntries: [Date: Entry], _ grouping: ChartGrouping) -> [ChartEntry] {
+        var entries: [ChartEntry] = []
+        let calComponent = grouping.info.component
+        for (index, date) in Date.past(10, calComponent).reversed().enumerated() {
+
+            var label = String(date.get(calComponent))
+            if (index == 0 || date.get(calComponent) == 1) && calComponent != .year {
+                label = "\(label)\n\(date.get(.year))"
+            }
+
+            var count = 0
+            for habitDate in habitEntries.keys {
+                if habitDate.get(calComponent) == date.get(calComponent) {
+                    count += 1
+                }
+            }
+
+            let entry = ChartEntry(label: label, value: Double(count))
+            entries.append(entry)
+        }
+        return entries
+    }
+
     static func scoreForLast15Days(_ habitEntries: [Date: Entry]) -> [ChartEntry] {
         var entries: [ChartEntry] = []
         var score = 0.0
@@ -57,4 +80,24 @@ struct ChartEntry: Identifiable {
         return entries
     }
 
+}
+
+enum ChartGrouping: CaseIterable {
+    case week
+    case month
+    case quarter
+    case year
+
+    var info: (component: Calendar.Component, text: String) {
+        switch self {
+        case .week:
+            return (.weekOfYear, "Week")
+        case .month:
+            return (.month, "Month")
+        case .quarter:
+            return (.quarter, "Quarter")
+        case .year:
+            return (.year, "Year")
+        }
+    }
 }

@@ -44,7 +44,26 @@ struct ChartEntry: Identifiable {
         let calComponent = grouping.info.component
         for (index, date) in Date.past(10, calComponent).reversed().enumerated() {
 
-            var label = String(date.get(calComponent))
+            var label: String
+            switch calComponent {
+            case .weekOfYear:
+                label = "W" + String(date.get(calComponent))
+            case .month:
+                label = date.monthName
+            case .quarter:
+                switch date.get(.month) {
+                case 1,2,3: label = "Q1"
+                case 4,5,6: label = "Q2"
+                case 7,8,9: label = "Q3"
+                case 10,11,12: label = "Q4"
+                default: label = "Q"
+                }
+            case .year:
+                label = String(date.get(calComponent))
+            default:
+                label = ""
+            }
+
             if (index == 0 || date.get(calComponent) == 1) && calComponent != .year {
                 label = "\(label)\n\(date.get(.year))"
             }

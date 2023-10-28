@@ -41,14 +41,6 @@ struct HabitDetailView: View {
                         .cornerRadius(4)
                 }
                 .foregroundColor(habit.uiColor)
-                HStack {
-                    Label("Theme", systemImage: "paintpalette")
-                    Spacer()
-                    Text("X")
-                        .padding(4)
-                        .cornerRadius(4)
-                }
-                .foregroundColor(.accentColor)
             }
             Section(header: Text("Score")) {
                 ScoreChartView(habit: habit)

@@ -12,7 +12,7 @@ struct HabitDetailView: View {
                 HStack {
                     Label("Score", systemImage: "gamecontroller")
                     Spacer()
-                    Text("\(habit.computeScore())%")
+                    Text("\(habit.computeScore(), specifier: "%.1f")%")
                         .padding(4)
                         .cornerRadius(4)
                 }

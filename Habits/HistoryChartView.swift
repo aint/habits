@@ -15,7 +15,7 @@ struct HistoryChartView: View {
             }
 
             Chart {
-                ForEach(ChartEntry.render(habit.entries, selectionGrouping)) { entry in
+                ForEach(ChartEntry.renderAll(habit.entries, selectionGrouping, .count)) { entry in
                     BarMark(
                         x: .value("Period", entry.label),
                         y: .value("Count", entry.value)

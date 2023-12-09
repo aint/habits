@@ -81,6 +81,53 @@ struct ChartEntry: Identifiable {
         return entries
     }
 
+    // generic render func to calc score and history
+    static func renderAll(_ habitEntries: [Date: Entry], _ grouping: ChartGrouping, _ type: ChartType) -> [ChartEntry] {
+        let calComponent = grouping.info.component
+        var entries: [ChartEntry] = []
+        var score = 0.0
+
+        for (index, date) in Date.past(8, calComponent).reversed().enumerated() {
+            var label: String
+            switch calComponent {
+            case .weekOfYear:
+                label = "W" + String(date.get(calComponent))
+            case .month:
+                label = date.monthName
+            case .quarter:
+                // we prepend a year to avoid duplicates in x axis
+                label = String(date.get(.year)) + "Q" + String(date.get(calComponent))
+            case .year:
+                label = String(date.get(calComponent))
+            default:
+                label = "?"
+            }
+
+            if (index == 0 || date.get(calComponent) == 1) && calComponent != .year {
+                label = "\(label)\n\(date.get(.year))"
+            }
+
+            var entry: ChartEntry
+            if type == ChartType.count {
+                var count = 0
+                for habitDate in habitEntries.keys {
+                    if habitDate.get(calComponent) == date.get(calComponent) {
+                        count += 1
+                    }
+                }
+                entry = ChartEntry(label: label, value: Double(count))
+            } else {
+                let value = habitEntries[date.withoutTime]?.value ?? 0.0
+                score = Habit.computeScore(score, value)
+                entry = ChartEntry(label: label, value: score * 100)
+            }
+
+            entries.append(entry)
+        }
+
+        return entries
+    }
+
     static func scoreForLast15Days(_ habitEntries: [Date: Entry]) -> [ChartEntry] {
         var entries: [ChartEntry] = []
         var score = 0.0
@@ -99,6 +146,11 @@ struct ChartEntry: Identifiable {
         return entries
     }
 
+}
+
+enum ChartType {
+    case score
+    case count
 }
 
 enum ChartGrouping: CaseIterable {
